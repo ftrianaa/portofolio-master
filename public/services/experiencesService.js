@@ -29,6 +29,20 @@ const experiencesService = {
                }
           })
           return result
+     },
+     deleteExperience: (id) => {
+          const result = axios.delete(config.apiUrl + 'delete/experience/' + id).then((response) => {
+               return {
+                    success: response.data.success,
+                    data: response.data.data
+               }
+          }).catch((error) => {
+               return {
+                    success: false,
+                    data: error
+               }
+          })
+          return result
      }
 }
 

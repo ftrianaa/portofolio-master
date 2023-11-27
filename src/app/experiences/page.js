@@ -37,6 +37,30 @@ const ListExperience = () => {
 
      }
 
+     const handleDeleteExperience = async (id) => {
+          try {
+               const responseDeleteExperience = await experiencesService.deleteExperience(id)
+               if (responseDeleteExperience.success) {
+                    fetchListExperience()
+               }
+               else {
+                    <Snackbar
+                         open={open}
+                         autoHideDuration={6000}
+                         onClose={handleClose}
+                         message="Failed to delete data"
+                    />
+               }
+          } catch (error) {
+               <Snackbar
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                    message={error.message}
+               />
+          }
+     }
+
      useEffect(() => {
           fetchListExperience()
           return () => setListExperience([])
@@ -83,7 +107,7 @@ const ListExperience = () => {
                                                   <IconButton aria-label="edit">
                                                        <EditRounded />
                                                   </IconButton>
-                                                  <IconButton aria-label="delete">
+                                                  <IconButton aria-label="delete" onClick={() => handleDeleteExperience(item.experiencesId)}>
                                                        <DeleteRounded />
                                                   </IconButton>
                                                   <IconButton aria-label='link'>

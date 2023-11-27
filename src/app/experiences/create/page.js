@@ -13,7 +13,8 @@ const CreateExperience = () => {
 
      const handleInputExperience = async () => {
 
-          const responseCreateInputExperience = await experiencesService.createExperience(inputExperience)
+          const newDataExperience = { ...inputExperience, tags: ["Next.js"], preview: 'https://firebasestorage.googleapis.com/v0/b/portofolio-578ef.appspot.com/o/experiences%2Folimall_500x500.png?alt=media&token=712cc067-dfab-4677-a5d5-4d850100041a' }
+          const responseCreateInputExperience = await experiencesService.createExperience(newDataExperience)
           return console.log(responseCreateInputExperience)
      }
 
