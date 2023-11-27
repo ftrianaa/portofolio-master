@@ -15,6 +15,7 @@ const CreateExperience = () => {
 
           const newDataExperience = { ...inputExperience, tags: [inputExperience?.tags?.split(',')] }
           const responseCreateInputExperience = await experiencesService.createExperience(newDataExperience)
+          setInputExperience({})
           return console.log(responseCreateInputExperience)
      }
 
@@ -31,7 +32,7 @@ const CreateExperience = () => {
                     </Button>
                </Box>
                <Paper style={{ padding: 30 }}>
-                    <FormControl fullWidth style={{ paddingTop: 10 }}>
+                    <FormControl fullWidth style={{ paddingBottom: 10 }}>
                          <TextField
                               id="outlined-multiline-flexible"
                               label="Link Preview"
