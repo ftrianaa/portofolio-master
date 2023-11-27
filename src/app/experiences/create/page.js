@@ -13,7 +13,7 @@ const CreateExperience = () => {
 
      const handleInputExperience = async () => {
 
-          const newDataExperience = { ...inputExperience, tags: ["Next.js"], preview: 'https://firebasestorage.googleapis.com/v0/b/portofolio-578ef.appspot.com/o/experiences%2Folimall_500x500.png?alt=media&token=712cc067-dfab-4677-a5d5-4d850100041a' }
+          const newDataExperience = { ...inputExperience, tags: [inputExperience?.tags?.split(',')] }
           const responseCreateInputExperience = await experiencesService.createExperience(newDataExperience)
           return console.log(responseCreateInputExperience)
      }
@@ -31,6 +31,16 @@ const CreateExperience = () => {
                     </Button>
                </Box>
                <Paper style={{ padding: 30 }}>
+                    <FormControl fullWidth style={{ paddingTop: 10 }}>
+                         <TextField
+                              id="outlined-multiline-flexible"
+                              label="Link Preview"
+                              multiline
+                              maxRows={4}
+                              onChange={(e) => setInputExperience({ ...inputExperience, preview: e.target.value })}
+                         />
+
+                    </FormControl>
                     <FormControl fullWidth>
                          <TextField
                               id="outlined-multiline-flexible"
@@ -61,6 +71,17 @@ const CreateExperience = () => {
                               onChange={(e) => setInputExperience({ ...inputExperience, link: e.target.value })}
 
                          />
+                    </FormControl>
+                    <FormControl fullWidth style={{ paddingTop: 10 }}>
+                         <TextField
+                              id="outlined-multiline-flexible"
+                              label="Tags"
+                              multiline
+                              maxRows={4}
+                              onChange={(e) => setInputExperience({ ...inputExperience, tags: e.target.value })}
+                              helperText="Separate with Comma (,)"
+                         />
+
                     </FormControl>
                     <FormControl style={{
                          paddingTop: 10
