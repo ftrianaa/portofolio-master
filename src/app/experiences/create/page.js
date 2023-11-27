@@ -13,7 +13,7 @@ const CreateExperience = () => {
 
      const handleInputExperience = async () => {
 
-          const newDataExperience = { ...inputExperience, tags: [inputExperience?.tags?.split(',')] }
+          const newDataExperience = { ...inputExperience, tags: [inputExperience?.tags] }
           const responseCreateInputExperience = await experiencesService.createExperience(newDataExperience)
           setInputExperience({})
           return console.log(responseCreateInputExperience)
